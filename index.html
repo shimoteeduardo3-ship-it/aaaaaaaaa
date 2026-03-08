@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <meta name="mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <title>Feliz Dia das Mulheres ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+    :root {
+      --rose: #e8537a;
+      --deep-rose: #c93060;
+      --blush: #f9c8d8;
+      --cream: #fff8f0;
+      --gold: #d4a054;
+      --dark: #0d0508;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      background: var(--dark);
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--cream);
+      overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+    /* ══════════════════════════════════════════
+       SHARED BG — identical on mobile & desktop
+    ══════════════════════════════════════════ */
+    .shared-bg {
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, #3d0a1ecc 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 90%, #1a0830cc 0%, transparent 60%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, #1a0510 0%, #050105 100%);
+      z-index: 0;
+    }
+
+    .shared-stars {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background-image:
+        radial-gradient(1.5px 1.5px at  8% 12%, #fffb 0%, transparent 100%),
+        radial-gradient(1px   1px   at 25% 65%, #ffcc8877 0%, transparent 100%),
+        radial-gradient(1px   1px   at 50% 20%, #fff9 0%, transparent 100%),
+        radial-gradient(2px   2px   at 72% 78%, #fffb 0%, transparent 100%),
+        radial-gradient(1px   1px   at 88% 38%, #ffcc8855 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 18% 88%, #fff8 0%, transparent 100%),
+        radial-gradient(1px   1px   at 63% 52%, #fff6 0%, transparent 100%),
+        radial-gradient(1px   1px   at 38%  8%, #ffddaa66 0%, transparent 100%),
+        radial-gradient(1px   1px   at 83% 18%, #fffa 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 47% 72%, #fff7 0%, transparent 100%),
+        radial-gradient(1px   1px   at 92% 55%, #fffb 0%, transparent 100%),
+        radial-gradient(1px   1px   at  5% 45%, #fff6 0%, transparent 100%),
+        radial-gradient(2px   2px   at 60% 90%, #ffcc8844 0%, transparent 100%),
+        radial-gradient(1px   1px   at 15% 35%, #fff7 0%, transparent 100%),
+        radial-gradient(1px   1px   at 78% 58%, #fff5 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 33% 42%, #ffcc8855 0%, transparent 100%);
+      animation: twinkle 4s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: .65; }
+      to   { opacity: 1; }
+    }
+
+    /* ══════════════════════════════════════════
+       SPLASH SCREEN
+    ══════════════════════════════════════════ */
+    #splash {
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      transition: opacity .9s ease, visibility .9s ease;
+      overflow: hidden;
+    }
+    #splash.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    .splash-rose-left, .splash-rose-right {
+      position: absolute;
+      font-size: clamp(3rem, 10vw, 6rem);
+      opacity: .15;
+      pointer-events: none;
+      animation: floatSide 6s ease-in-out infinite alternate;
+    }
+    .splash-rose-left  { left: 3%;  bottom: 8%; }
+    .splash-rose-right { right: 3%; top: 8%; animation-delay: -3s; }
+    @keyframes floatSide {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-18px); }
+    }
+
+    .splash-rose-tl, .splash-rose-br {
+      position: absolute;
+      font-size: clamp(2rem, 6vw, 4rem);
+      opacity: .1;
+      pointer-events: none;
+      animation: floatSide 7s ease-in-out infinite alternate;
+    }
+    .splash-rose-tl { left: 8%;  top: 12%; animation-delay: -1s; }
+    .splash-rose-br { right: 8%; bottom: 12%; animation-delay: -4s; }
+
+    .splash-content {
+      text-align: center;
+      position: relative; z-index: 1;
+      padding: 0 20px;
+      width: 100%;
+      max-width: 600px;
+      animation: fadeDown .8s ease both;
+    }
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .splash-tag {
+      font-size: clamp(.65rem, 2.5vw, .82rem);
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: clamp(10px, 3vw, 18px);
+    }
+
+    .splash-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 13vw, 7.5rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, #f9c8d8 0%, #e8537a 45%, #d4a054 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 30px #e8537a66);
+      margin-bottom: clamp(6px, 2vw, 12px);
+    }
+
+    .splash-sub {
+      font-size: clamp(.85rem, 3.5vw, 1rem);
+      letter-spacing: .12em;
+      color: #c9a8b8;
+      font-style: italic;
+      margin-bottom: clamp(32px, 8vw, 56px);
+    }
+
+    .enter-btn {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      gap: clamp(8px, 3vw, 14px);
+      padding: clamp(18px, 5vw, 26px) clamp(32px, 10vw, 64px);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+      letter-spacing: .16em;
+      color: #fff;
+      background: linear-gradient(135deg, #e8537a 0%, #c93060 50%, #a0203f 100%);
+      border: none; border-radius: 100px;
+      cursor: pointer;
+      text-transform: uppercase;
+      touch-action: manipulation;
+      -webkit-appearance: none;
+      box-shadow:
+        0 0 0 2px #e8537a55,
+        0 0 40px #e8537a66,
+        0 0 80px #e8537a33,
+        0 8px 32px #00000066;
+      animation: bigPulse 2.2s ease-in-out infinite;
+      transition: transform .15s;
+      width: min(90vw, 400px);
+    }
+    .enter-btn:hover  { transform: scale(1.05); }
+    .enter-btn:active { transform: scale(.95); }
+
+    .btn-icon {
+      font-size: clamp(1.3rem, 5vw, 1.8rem);
+      animation: heartbeat 1.4s ease-in-out infinite;
+    }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      14%     { transform: scale(1.3); }
+      28%     { transform: scale(1); }
+      42%     { transform: scale(1.18); }
+    }
+    @keyframes bigPulse {
+      0%,100% { box-shadow: 0 0 0 2px #e8537a55, 0 0 40px #e8537a66, 0 0 80px #e8537a33, 0 8px 32px #0006; }
+      50%      { box-shadow: 0 0 0 7px #e8537a44, 0 0 70px #e8537a88, 0 0 130px #e8537a44, 0 8px 32px #0006; }
+    }
+
+    .btn-hint {
+      margin-top: clamp(14px, 4vw, 22px);
+      font-size: clamp(.68rem, 2.5vw, .82rem);
+      letter-spacing: .22em;
+      color: #9a6878;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════════
+       MAIN SITE
+    ══════════════════════════════════════════ */
+    #site {
+      opacity: 0;
+      transition: opacity 1s ease .2s;
+      pointer-events: none;
+    }
+    #site.visible { opacity: 1; pointer-events: auto; }
+
+    .petals-canvas {
+      position: fixed; inset: 0; z-index: 2; pointer-events: none;
+    }
+
+    .floating-hearts {
+      position: fixed; inset: 0; z-index: 2;
+      pointer-events: none; overflow: hidden;
+    }
+    .fh {
+      position: absolute; bottom: -60px;
+      font-size: var(--s, 1.2rem);
+      left: var(--x, 50%);
+      animation: floatUp var(--dur, 8s) ease-in var(--del, 0s) infinite;
+      opacity: 0;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) rotate(0deg);      opacity: 0; }
+      10%  { opacity: .85; }
+      90%  { opacity: .35; }
+      100% { transform: translateY(-115vh) rotate(30deg); opacity: 0; }
+    }
+
+    .wrapper {
+      position: relative; z-index: 3;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(14px, 5vw, 28px) clamp(60px, 12vw, 100px);
+    }
+
+    .hero {
+      text-align: center;
+      padding: clamp(48px, 10vw, 80px) 0 clamp(24px, 5vw, 40px);
+      animation: fadeDown .9s ease both;
+    }
+    .hero-tag {
+      font-size: clamp(.7rem, 2.8vw, .88rem);
+      letter-spacing: .3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: clamp(10px, 3vw, 18px);
+    }
+    .hero h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 11vw, 6.5rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, #f9c8d8 10%, #e8537a 45%, #d4a054 80%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 28px #e8537a55);
+      margin-bottom: clamp(8px, 2vw, 14px);
+    }
+    .hero-sub {
+      font-size: clamp(.88rem, 3.5vw, 1.05rem);
+      letter-spacing: .1em; color: #c9a8b8; font-style: italic;
+    }
+
+    .divider {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin: clamp(20px, 5vw, 34px) auto; opacity: .7;
+    }
+    .divider span { font-size: clamp(1rem, 4vw, 1.3rem); color: var(--rose); }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, #e8537a55, transparent);
+    }
+
+    .photo-section {
+      display: flex; justify-content: center;
+      margin: clamp(28px, 7vw, 48px) 0 clamp(36px, 9vw, 60px);
+      animation: fadeUp .9s .3s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .photo-frame { position: relative; display: inline-block; }
+
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      inset: clamp(-10px, -3vw, -14px);
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--rose) 0deg, var(--gold) 60deg, var(--blush) 120deg,
+        var(--deep-rose) 180deg, var(--gold) 240deg, var(--rose) 300deg, var(--gold) 360deg
+      );
+      animation: spin 8s linear infinite;
+      z-index: -1;
+    }
+    .photo-frame::after {
+      content: '';
+      position: absolute;
+      inset: clamp(-3px, -1vw, -5px);
+      border-radius: 50%;
+      background: var(--dark);
+      z-index: -1;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .photo-frame img {
+      width:  clamp(160px, 48vw, 230px);
+      height: clamp(160px, 48vw, 230px);
+      border-radius: 50%;
+      object-fit: cover; display: block;
+      border: 3px solid #2a1520;
+      box-shadow: 0 0 36px #e8537a55, 0 0 70px #c9306033;
+    }
+
+    .photo-glow {
+      position: absolute; inset: -40px; border-radius: 50%;
+      background: radial-gradient(circle, #e8537a22 0%, transparent 70%);
+      animation: glow 3s ease-in-out infinite; z-index: -2;
+    }
+    @keyframes glow {
+      0%,100% { transform: scale(1);    opacity: .55; }
+      50%      { transform: scale(1.18); opacity: 1;   }
+    }
+
+    .hearts-around {
+      position: absolute; inset: -50px;
+      border-radius: 50%; pointer-events: none;
+    }
+    .hearts-around span {
+      position: absolute;
+      font-size: clamp(.7rem, 3vw, 1rem);
+      animation: orbit var(--dur,6s) linear infinite;
+      animation-delay: var(--del,0s);
+    }
+    /* fixed orbit radius that scales with photo */
+    @keyframes orbit {
+      from { transform: rotate(0deg)   translateX(var(--orbit-r, 120px)) rotate(0deg); }
+      to   { transform: rotate(360deg) translateX(var(--orbit-r, 120px)) rotate(-360deg); }
+    }
+
+    .card {
+      background: linear-gradient(145deg, #1e0a1290 0%, #16071090 100%);
+      border: 1px solid #e8537a22;
+      border-radius: clamp(16px, 4vw, 24px);
+      padding: clamp(22px, 6vw, 44px) clamp(16px, 5.5vw, 48px);
+      margin: clamp(20px, 5vw, 32px) 0;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 8px 40px #00000055, inset 0 1px 0 #ffffff0a;
+      animation: fadeUp .9s ease both;
+      position: relative; overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute;
+      top: -50px; right: -50px;
+      width: 160px; height: 160px; border-radius: 50%;
+      background: radial-gradient(circle, #e8537a18 0%, transparent 70%);
+    }
+    .card::after {
+      content: ''; position: absolute;
+      bottom: -50px; left: -50px;
+      width: 140px; height: 140px; border-radius: 50%;
+      background: radial-gradient(circle, #d4a05418 0%, transparent 70%);
+    }
+
+    .card-label {
+      font-size: clamp(.65rem, 2.5vw, .8rem);
+      letter-spacing: .28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: clamp(12px, 3vw, 18px);
+    }
+    .card p {
+      font-size: clamp(.98rem, 4vw, 1.2rem);
+      line-height: 1.95; color: #f0dce6; font-weight: 300;
+      position: relative; z-index: 1;
+    }
+    .card p em { font-style: italic; color: var(--blush); }
+
+    .poem-card { text-align: center; }
+    .poem-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(1.8rem, 7vw, 2.6rem);
+      color: var(--rose); margin-bottom: clamp(14px, 4vw, 22px);
+      filter: drop-shadow(0 0 10px #e8537a44);
+    }
+    .poem-card p { font-style: italic; font-size: clamp(.95rem, 3.8vw, 1.22rem); line-height: 2.1; }
+
+    .final {
+      text-align: center;
+      padding: clamp(36px, 9vw, 60px) 0 clamp(20px, 5vw, 30px);
+      animation: fadeUp 1s .4s ease both;
+    }
+    .big-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2.4rem, 10vw, 5rem);
+      background: linear-gradient(135deg, #f9c8d8, #e8537a 50%, #d4a054);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px #e8537a66);
+      line-height: 1.3;
+    }
+
+    #musicBtn {
+      position: fixed;
+      bottom: clamp(18px, 5vw, 28px);
+      right: clamp(18px, 5vw, 28px);
+      z-index: 9998;
+      width: clamp(46px, 12vw, 54px);
+      height: clamp(46px, 12vw, 54px);
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e8537a, #c93060);
+      border: 2px solid #f9c8d844;
+      color: #fff;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px #e8537a55;
+      animation: btnPulse 2.5s ease-in-out infinite;
+      transition: transform .2s;
+      touch-action: manipulation;
+    }
+    #musicBtn:active { transform: scale(.88); }
+    @keyframes btnPulse {
+      0%,100% { box-shadow: 0 4px 24px #e8537a55; }
+      50%      { box-shadow: 0 4px 40px #e8537a99; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- shared bg (always visible — splash + site use same background) -->
+<div class="shared-bg"></div>
+<div class="shared-stars"></div>
+
+<!-- ════════════════════════════════
+     SPLASH
+════════════════════════════════ -->
+<div id="splash">
+  <div class="splash-rose-left">🌹</div>
+  <div class="splash-rose-right">🌹</div>
+  <div class="splash-rose-tl">✨</div>
+  <div class="splash-rose-br">✨</div>
+
+  <div class="splash-content">
+    <p class="splash-tag">✦ &nbsp; 8 de Março &nbsp; ✦</p>
+    <h1 class="splash-title">Feliz Dia<br/>das Mulheres</h1>
+    <p class="splash-sub">uma surpresa especial te espera</p>
+
+    <button class="enter-btn" id="enterBtn">
+      <span class="btn-icon">❤️</span>
+      Abrir Surpresa
+      <span class="btn-icon">❤️</span>
+    </button>
+
+    <p class="btn-hint">toque para entrar</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════
+     MAIN SITE
+════════════════════════════════ -->
+<div id="site">
+
+  <canvas class="petals-canvas" id="petals"></canvas>
+  <div class="floating-hearts" id="fhearts"></div>
+
+  <div class="wrapper">
+
+    <header class="hero">
+      <p class="hero-tag">8 de Março · Dia Internacional da Mulher</p>
+      <h1>Feliz Dia das Mulheres</h1>
+      <p class="hero-sub">para a minha princesa amada</p>
+    </header>
+
+    <div class="divider"><span>❤</span></div>
+
+    <div class="photo-section">
+      <div class="photo-frame">
+        <div class="photo-glow"></div>
+        <img src="https://i.postimg.cc/N2jftzhB/image.jpg" alt="Minha princesa"
+             onerror="this.src='https://via.placeholder.com/230x230/2a1520/e8537a?text=❤'"/>
+        <div class="hearts-around" id="heartsAround">
+          <span style="--dur:7s;--del:0s">🌹</span>
+          <span style="--dur:9s;--del:-3s">✨</span>
+          <span style="--dur:6s;--del:-1.5s">💖</span>
+          <span style="--dur:8s;--del:-4.5s">🌸</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <div class="card" style="animation-delay:.1s">
+      <p class="card-label">✦ Uma mensagem do coração ✦</p>
+      <p>
+        Você é a mulher mais linda desse mundo inteirinho, minha princesa... Não existe palavra que consiga descrever completamente o que você significa pra mim. No seu sorriso mora a luz que ilumina os meus dias; nos seus olhos vejo o universo inteiro brilhando só pra mim. Cada detalhe seu — do jeito que você ri, da forma como você olha pras coisas, da sua força silenciosa — me faz ter certeza de que você é um presente que a vida me deu e que eu não mereço, mas que vou cuidar todos os dias com todo o amor que tenho.
+        <br/><br/>
+        Nesse dia tão especial, quero que você saiba que você inspira tudo ao redor, que sua existência faz o mundo ser um lugar muito mais bonito, e que eu sou o homem mais sortudo do mundo por ter você ao meu lado.
+        <br/><br/>
+        <em>Eu te amo muito, meu amor!</em>
+      </p>
+    </div>
+
+    <div class="divider"><span>🌹</span></div>
+
+    <div class="card poem-card" style="animation-delay:.2s">
+      <p class="poem-title">Retrato de Você</p>
+      <p>
+        No silêncio da manhã te encontro,<br/>
+        como se o sol soubesse o teu caminho;<br/>
+        no fundo do meu peito te descubro —<br/>
+        o amor mais verdadeiro e mais lindo.<br/>
+        <br/>
+        Teus olhos guardam mundos que não vi,<br/>
+        teu riso aquece o que o inverno esfria;<br/>
+        és poesia que aprendi a sorrir,<br/>
+        és a melhor parte de qualquer dia.
+      </p>
+    </div>
+
+    <div class="card poem-card" style="animation-delay:.3s">
+      <p class="poem-title">Mulher de Luz</p>
+      <p>
+        Mulher de força, mulher de flor,<br/>
+        que carrega o mundo com leveza;<br/>
+        és feita de bravura e de amor,<br/>
+        de coragem, graça e gentileza.<br/>
+        <br/>
+        Em cada passo que você dá<br/>
+        o chão aprende a ser mais firme;<br/>
+        onde você chega, o ar fica<br/>
+        com cheiro de tudo que é sublime.
+      </p>
+    </div>
+
+    <div class="card poem-card" style="animation-delay:.4s">
+      <p class="poem-title">Promessa</p>
+      <p>
+        Prometo estar em cada amanhecer,<br/>
+        quando o dia pesar, vou te segurar;<br/>
+        te escolho todos os dias de novo —<br/>
+        ontem, agora, e sempre vou te amar.<br/>
+        <br/>
+        Você não precisa ser perfeita, amor,<br/>
+        você já é tudo o que eu precisava;<br/>
+        és minha casa, minha calmaria,<br/>
+        a mais bela história que eu já guardava.
+      </p>
+    </div>
+
+    <div class="divider"><span>💫</span></div>
+
+    <div class="final">
+      <div class="big-text">Eu te amo,<br/>meu amor ❤️</div>
+    </div>
+
+  </div>
+</div>
+
+<button id="musicBtn" style="display:none" title="Música">🎵</button>
+
+<script>
+  /* ══ AUDIO ══ */
+  const audio = new Audio('https://files.catbox.moe/14tqfz.mp3');
+  audio.loop = true; audio.volume = 0.18;
+  let playing = false;
+
+  /* ══ ORBIT RADIUS — responsive ══ */
+  function setOrbitRadius() {
+    const r = Math.min(window.innerWidth * 0.32, 130);
+    document.querySelectorAll('.hearts-around span').forEach(s => {
+      s.style.setProperty('--orbit-r', r + 'px');
+      s.style.transformOrigin = r + 'px ' + r + 'px';
+    });
+  }
+  window.addEventListener('resize', setOrbitRadius);
+  setOrbitRadius();
+
+  /* ══ ENTER ══ */
+  document.getElementById('enterBtn').addEventListener('click', () => {
+    audio.play().then(() => { playing = true; updateMusicBtn(); }).catch(() => {});
+    document.getElementById('splash').classList.add('hide');
+    document.getElementById('site').classList.add('visible');
+    document.getElementById('musicBtn').style.display = 'flex';
+    initSite();
+  });
+
+  /* ══ MUSIC BTN ══ */
+  function updateMusicBtn() {
+    const btn = document.getElementById('musicBtn');
+    btn.textContent = playing ? '🎵' : '🔇';
+    btn.title = playing ? 'Pausar' : 'Tocar';
+  }
+  document.getElementById('musicBtn').addEventListener('click', e => {
+    e.stopPropagation();
+    if (playing) { audio.pause(); playing = false; }
+    else         { audio.play();  playing = true;  }
+    updateMusicBtn();
+  });
+
+  /* ══ SITE INIT ══ */
+  function initSite() {
+
+    /* floating hearts */
+    const fhContainer = document.getElementById('fhearts');
+    const emojis = ['❤️','💕','🌹','💖','✨','🌸','💗','💓','🌺','💝'];
+    const count = window.innerWidth < 480 ? 16 : 26;
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('div');
+      el.className = 'fh';
+      const s = (.45 + Math.random() * 1.1).toFixed(2);
+      el.style.cssText = `--x:${Math.random()*100}%;--s:${s}rem;--dur:${6+Math.random()*9}s;--del:${-Math.random()*14}s`;
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      fhContainer.appendChild(el);
+    }
+
+    /* petal canvas */
+    const canvas = document.getElementById('petals');
+    const ctx = canvas.getContext('2d');
+    const isMobile = window.innerWidth < 500;
+    let W, H;
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    const petalCount = isMobile ? 18 : 32;
+    const petals = Array.from({ length: petalCount }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * -window.innerHeight,
+      r: 3 + Math.random() * 6,
+      speed: .3 + Math.random() * .6,
+      drift: (Math.random() - .5) * .5,
+      rot: Math.random() * Math.PI * 2,
+      rotSpeed: (Math.random() - .5) * .035,
+      alpha: .16 + Math.random() * .42,
+      color: Math.random() > .5 ? '#e8537a' : '#f9c8d8'
+    }));
+
+    function drawPetal(p) {
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.ellipse(0, 0, p.r, p.r * 1.6, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    let animId;
+    function loop() {
+      ctx.clearRect(0, 0, W, H);
+      petals.forEach(p => {
+        p.y += p.speed; p.x += p.drift; p.rot += p.rotSpeed;
+        if (p.y > H + 20) { p.y = -20; p.x = Math.random() * W; }
+        drawPetal(p);
+      });
+      animId = requestAnimationFrame(loop);
+    }
+
+    /* pause when tab is hidden — saves battery on mobile */
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) cancelAnimationFrame(animId);
+      else loop();
+    });
+
+    loop();
+  }
+</script>
+</body>
+</html>
